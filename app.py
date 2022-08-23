@@ -13,7 +13,8 @@ SCHEMA_FILE_NAME='schema.yaml'
 app=Flask(__name__)
 
 schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
-print(f"schema=:{schema['columns']}")
+schema_data=schema['columns']
+print(f"schema:{schema_data}")
 
 with open('model.pkl','rb') as obj_file:
     model=dill.load(obj_file)
@@ -36,8 +37,8 @@ def predict():
     k1=list(request.form.keys())
     v1=list(request.form.values())
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
-    for col in schema.keys():
-        data[col]=data[col].astype(schema[col])
+    for col in schema_data.keys():
+        data[col]=data[col].astype(schema_data[col])
     output=model.predict(data)[0]
     print('output:',output)
     return render_template('home.html', prediction_text="The Sales is  {}".format(output))
