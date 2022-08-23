@@ -12,10 +12,6 @@ SCHEMA_FILE_NAME='schema.yaml'
 
 app=Flask(__name__)
 
-schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
-schema_data=schema['columns']
-print(f"schema:{schema_data}")
-
 with open('model.pkl','rb') as obj_file:
     model=dill.load(obj_file)
 
@@ -36,6 +32,8 @@ def predict_api():
 def predict():
     k1=list(request.form.keys())
     v1=list(request.form.values())
+    schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
+    schema_data=schema['columns']
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
     for col in list(schema_data.keys()):
         data[col]=data[col].astype(schema_data[col])
