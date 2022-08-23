@@ -6,14 +6,13 @@ import dill
 from sales.util import read_yaml_file
 import os
 
-ROOT_DIR=os.getcwd()
 CONFIG_DIR='config'
 SCHEMA_FILE_NAME='schema.yaml'
 
 
 app=Flask(__name__)
 
-schema=read_yaml_file(file_path=os.path.join(ROOT_DIR,CONFIG_DIR,SCHEMA_FILE_NAME))
+schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
 print(f"schema=:{schema['columns']}")
 
 with open('model.pkl','rb') as obj_file:
