@@ -1,6 +1,3 @@
-from importlib.resources import read_binary
-from lib2to3.pytree import Base
-from msilib import schema
 import os,sys
 from sales.logger import logging
 from sales.exception import SalesException

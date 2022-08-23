@@ -1,5 +1,4 @@
 import os,sys
-from tkinter.filedialog import test
 from sales.exception import SalesException
 from sales.logger import logging
 from sales.entity.config_entity import DataIngestionConfig

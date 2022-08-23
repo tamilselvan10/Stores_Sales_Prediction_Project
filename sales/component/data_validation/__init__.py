@@ -1,5 +1,4 @@
 import os,sys
-from tkinter import E
 from sales.constant import DOMAIN_VALUE, NUMERICAL_COLUMNS, ORDINAL_CATEGORICAL_COLUMNS
 from sales.exception import SalesException
 from sales.logger import logging

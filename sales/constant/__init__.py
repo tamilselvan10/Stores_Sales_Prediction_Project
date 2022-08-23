@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-from tkinter import CURRENT
 
 ROOT_DIR=os.getcwd()
 CONFIG_DIR='config'

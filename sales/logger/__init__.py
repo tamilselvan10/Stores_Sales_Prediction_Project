@@ -1,4 +1,3 @@
-from distutils.log import INFO
 import logging
 import os,sys
 from datetime import datetime

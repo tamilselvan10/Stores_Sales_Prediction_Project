@@ -1,4 +1,3 @@
-from msilib import schema
 import os,sys
 from sales.logger import logging
 from sales.exception import SalesException
