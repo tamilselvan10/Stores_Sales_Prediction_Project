@@ -7,12 +7,18 @@ from sales.util import read_yaml_file
 import os
 from sales.constant import *
 
+MODEL_DIR='saved_models'
+MODEL_FILE_LIST=[eval(i) for i in os.listdir(os.path.join(MODEL_DIR))]
+MODEL_FILE_DIR=os.path.join(MODEL_DIR,str(max(MODEL_FILE_LIST)))
+MODEL_FILE_NAME=os.listdir(MODEL_FILE_DIR)[0]
 
+MODEL_FILE_PATH=os.path.join(MODEL_FILE_DIR,MODEL_FILE_NAME)
 
+print(F'MODEL_FILE_PATH:{MODEL_FILE_PATH}')
 
 app=Flask(__name__)
 
-with open('model.pkl','rb') as obj_file:
+with open(MODEL_FILE_PATH,'rb') as obj_file:
     model=dill.load(obj_file)
 
 @app.route('/')

@@ -245,7 +245,7 @@ class ModelFactory:
 
     @staticmethod
     def get_best_model_from_grid_searched_best_model_list(grid_searched_best_model_list: List[GridSearchedBestModel],
-                                                          base_accuracy=0.5
+                                                          base_accuracy
                                                           ) -> BestModel:
         try:
             best_model = None
@@ -267,7 +267,7 @@ class ModelFactory:
             raise SalesException(e, sys) from e
 
 
-    def get_best_model(self, X, y,base_accuracy=0.5) -> BestModel:
+    def get_best_model(self, X, y,base_accuracy) -> BestModel:
         try:
             logging.info("Started Initializing model from config file")
             initialized_model_list = self.get_initialized_model_list()
@@ -278,7 +278,7 @@ class ModelFactory:
                 output_feature=y
             )
             return ModelFactory.get_best_model_from_grid_searched_best_model_list(grid_searched_best_model_list,
-                                                                                  base_accuracy=0.5)
+                                                                                  base_accuracy=base_accuracy)
         except Exception as e:
             raise SalesException(e, sys) from e
 

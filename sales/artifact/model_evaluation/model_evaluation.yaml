@@ -1,5 +1,6 @@
 best_model:
-  model_path: E:\ML\Stores_Sales_Prediction_Project\sales\artifact\model_trainer\2022-08-23-13-53-18\trained_model\model.pkl
+  model_path: E:\ML\Stores_Sales_Prediction_Project\sales\artifact\model_trainer\2022-08-23-19-38-23\trained_model\model.pkl
 history:
   2022-08-23-13-52-19: E:\ML\Stores_Sales_Prediction_Project\sales\artifact\model_trainer\2022-08-23-13-03-03\trained_model\model.pkl
   2022-08-23-13-53-18: E:\ML\Stores_Sales_Prediction_Project\sales\artifact\model_trainer\2022-08-23-13-52-19\trained_model\model.pkl
+  2022-08-23-19-38-23: E:\ML\Stores_Sales_Prediction_Project\sales\artifact\model_trainer\2022-08-23-13-53-18\trained_model\model.pkl
