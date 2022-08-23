@@ -14,6 +14,17 @@ app=Flask(__name__)
 with open('model.pkl','rb') as obj_file:
     model=dill.load(obj_file)
 
+schema_data={'Item_Identifier': 'object',
+ 'Item_Weight': 'float64',
+ 'Item_Fat_Content': 'object',
+ 'Item_Visibility': 'float64',
+ 'Item_Type': 'object',
+ 'Item_MRP': 'float64',
+ 'Outlet_Identifier': 'object',
+ 'Outlet_Establishment_Year': 'int64',
+ 'Outlet_Size': 'object',
+ 'Outlet_Location_Type': 'object',
+ 'Outlet_Type': 'object'}
 
 @app.route('/')
 def home():
@@ -31,12 +42,12 @@ def predict_api():
 def predict():
     k1=list(request.form.keys())
     v1=list(request.form.values())
-    CONFIG_DIR='config'
-    SCHEMA_FILE_NAME='schema.yaml'
-    schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
-    schema_data=schema['columns']
+    #CONFIG_DIR='config'
+    #SCHEMA_FILE_NAME='schema.yaml'
+    #schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
+    #schema_data=schema['columns']
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
-    for col in list(schema_data.keys()):
+    for col in schema_data.keys():
         data[col]=data[col].astype(schema_data[col])
     output=model.predict(data)[0]
     print('output:',output)
