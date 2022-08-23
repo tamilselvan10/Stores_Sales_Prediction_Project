@@ -6,8 +6,7 @@ import dill
 from sales.util import read_yaml_file
 import os
 
-CONFIG_DIR='config'
-SCHEMA_FILE_NAME='schema.yaml'
+
 
 
 app=Flask(__name__)
@@ -32,6 +31,8 @@ def predict_api():
 def predict():
     k1=list(request.form.keys())
     v1=list(request.form.values())
+    CONFIG_DIR='config'
+    SCHEMA_FILE_NAME='schema.yaml'
     schema=read_yaml_file(file_path=os.path.join(CONFIG_DIR,SCHEMA_FILE_NAME))
     schema_data=schema['columns']
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
