@@ -37,7 +37,7 @@ def predict():
     v1=list(request.form.values())
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
     for col in d.keys():
-        data[col]=data[col].astype(schema=[col])
+        data[col]=data[col].astype(schema[col])
     output=model.predict(data)[0]
     print('output:',output)
     return render_template('home.html', prediction_text="The Sales is  {}".format(output))
