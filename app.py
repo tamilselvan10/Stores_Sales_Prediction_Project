@@ -7,7 +7,7 @@ import dill
 
 app=Flask(__name__)
 
-with open(r'E:\ML\Stores_Sales_Prediction_Project\saved_models\2022-08-23-13-53-18\model.pkl','rb') as obj_file:
+with open('model.pkl','rb') as obj_file:
     model=dill.load(obj_file)
 
 d={'Item_Identifier': 'object',
