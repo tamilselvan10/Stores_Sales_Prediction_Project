@@ -4,12 +4,13 @@ import pandas as pd
 import numpy as np
 import dill
 from sales.util import read_yaml_file
+import os
 
 
 
 app=Flask(__name__)
 
-schema=read_yaml_file(file_path=r'E:\ML\Stores_Sales_Prediction_Project\config\schema.yaml')
+schema=read_yaml_file(file_path=r'config\schema.yaml')
 print(f"schema=:{schema['columns']}")
 
 with open('model.pkl','rb') as obj_file:
