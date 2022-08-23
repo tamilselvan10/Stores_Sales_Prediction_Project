@@ -37,7 +37,7 @@ def predict():
     k1=list(request.form.keys())
     v1=list(request.form.values())
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
-    for col in schema_data.keys():
+    for col in list(schema_data.keys()):
         data[col]=data[col].astype(schema_data[col])
     output=model.predict(data)[0]
     print('output:',output)
