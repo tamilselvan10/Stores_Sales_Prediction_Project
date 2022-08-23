@@ -3,24 +3,17 @@ import pickle
 import pandas as pd
 import numpy as np
 import dill
+from sales.util import read_yaml_file
+
 
 
 app=Flask(__name__)
 
+schema=read_yaml_file(file_path=r'E:\ML\Stores_Sales_Prediction_Project\config\schema.yaml')
+print(f"schema=:{schema['columns']}")
+
 with open('model.pkl','rb') as obj_file:
     model=dill.load(obj_file)
-
-d={'Item_Identifier': 'object',
- 'Item_Weight': 'float64',
- 'Item_Fat_Content': 'object',
- 'Item_Visibility': 'float64',
- 'Item_Type': 'object',
- 'Item_MRP': 'float64',
- 'Outlet_Identifier': 'object',
- 'Outlet_Establishment_Year': 'int64',
- 'Outlet_Size': 'object',
- 'Outlet_Location_Type': 'object',
- 'Outlet_Type': 'object'}
 
 
 @app.route('/')
@@ -41,7 +34,7 @@ def predict():
     v1=list(request.form.values())
     data=pd.DataFrame(dict(zip(k1,v1)),index=[0])
     for col in d.keys():
-        data[col]=data[col].astype(d[col])
+        data[col]=data[col].astype(schema=[col])
     output=model.predict(data)[0]
     print('output:',output)
     return render_template('home.html', prediction_text="The Sales is  {}".format(output))
