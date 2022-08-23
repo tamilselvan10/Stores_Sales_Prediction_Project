@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Big Mart Sales Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Item_Identifier" placeholder="Item_Identifier" required="required" /><br>
+      <input type="text" name="Item_Weight" placeholder="Item_Weight" required="required" /><br>
+      <input type="text" name="Item_Fat_Content" placeholder="Item_Fat_Content" required="required" /><br>
+      <input type="text" name="Item_Visibility" placeholder="Item_Visibility" required="required" /><br>
+      <input type="text" name="Item_Type" placeholder="Item_Type" required="required" /><br>
+
+      <input type="text" name="Item_MRP" placeholder="Item_MRP" required="required" /><br>
+      <input type="text" name="Outlet_Identifier" placeholder="Outlet_Identifier" required="required" /><br>
+      <input type="text" name="Outlet_Establishment_Year" placeholder="Outlet_Establishment_Year" required="required" /><br>
+      <input type="text" name="Outlet_Size" placeholder="Outlet_Size" required="required" /><br>
+      <input type="text" name="Outlet_Location_Type" placeholder="Outlet_Location_Type" required="required" /><br>
+
+      <input type="text" name="Outlet_Type" placeholder="Outlet_Type" required="required" /><br>
+
+      
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>
